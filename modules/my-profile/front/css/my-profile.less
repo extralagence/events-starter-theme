@@ -1,0 +1,84 @@
+.content input.text-input,
+{
+	color: #38302B;
+	border: 1px solid @color_border;
+	display: block;
+	font-size: 14px;
+	font-family: Georgia,serif;
+	line-height: 30px;
+	padding: 5px;
+	vertical-align: middle;
+	width: 295px;
+	height: 30px;
+}
+.content input[disabled="disabled"] {
+	background-color: #ECE8E6;
+}
+
+.content .nameHeader strong,
+.content .contactInfoHeader strong,
+.content .aboutYourselfHeader strong {
+	background: none repeat scroll 0% 0% @color_background;
+	border-bottom: 1px solid @color_border;
+	display: block;
+	color: #606060;
+	font-family: Georgia;
+	font-size: 18px;
+	font-style: italic;
+	float: none;
+	line-height: 40px;
+	width: 100%;
+	height: 40px;
+}
+
+.content .nameHeader,
+.content .contactInfoHeader,
+.content .aboutYourselfHeader {
+	margin-bottom: 0;
+}
+
+.content .contactInfoHeader,
+.content .aboutYourselfHeader {
+	margin-top: 50px;
+}
+
+.content label {
+	color: #202020;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+	width: auto;
+	float: none;
+}
+
+.content p.username,
+.content p.first_name,
+.content p.last_name,
+.content p.form-email,
+.content p.form-password,
+.content p.form-submit,
+{
+	background: none repeat scroll 0% 0% #ECE8E6;
+	margin-bottom: 0;
+	padding: 10px 20px;
+}
+.content p.username,
+.content p.form-email,
+.content p.form-password {
+	padding-top: 20px;
+}
+.content p.last_name,
+.content p.form-email, {
+	padding-bottom: 20px;
+}
+
+.content p.form-password + p.form-password {
+	padding-top: 10px;
+}
+
+.content p.form-submit {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}

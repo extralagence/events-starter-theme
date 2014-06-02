@@ -1,0 +1,108 @@
+/*********************
+ *
+ * HOTEL
+ * 
+ ********************/
+.hotel {
+	float: left;
+	margin-bottom: 50px;
+	width: 420px;
+}
+.hotel:nth-child(even) {
+	margin-left: 40px;
+}
+.hotel:nth-child(odd) {
+	clear: left;
+}
+//.map {
+//  float: left;
+//  margin-left: 40px;
+//  width: 420px;
+//  height: 200px;
+//}
+//#map-container {
+//  margin-top: 20px;
+//  width: 100%;
+//  height: 400px;
+//}
+/*********************
+ *
+ * SLIDER
+ * 
+ ********************/
+.gallery, .image {
+	border-bottom: 1px solid @color_border;
+	display: block;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	margin-top: 20px;
+	position: relative;
+	top: 0px; left: 0px;
+	width: 420px; height: 235px;
+	z-index: 1;
+}
+.gallery img {
+	display: block;
+	width:auto;
+	height:auto;
+}
+.gallery .wrapper {
+	overflow: hidden;
+	position: relative;
+	top: 0px; left: 0px;
+	z-index: 1;
+	width: 100%; height: 100%;
+}
+.gallery .wrapper ul {
+	position: absolute;
+	top: 0px; left: 0px;
+	width: 100%; height: 215px;
+}
+.gallery .wrapper li {
+	display: block;
+	overflow: hidden;
+	position: absolute;
+	top: 0px; left: 0px;
+	width:100%; height:100%;
+}
+.gallery .image {
+	position: absolute;
+	top: 0px; left: 0px;
+	width: 100%;
+	height: 100%;	
+}
+.gallery .legend {
+	position: absolute;
+	left: 0px; bottom: 0px;
+  background: @color_base;
+  background: rgba(red(@color_base), green(@color_base), blue(@color_base), 0.8);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-style: italic;
+	padding: 5px 10px 7px;
+	width: 100%;
+}
+/* PAGINATION */
+.gallery .pagination {
+	display: inline-block;
+	padding: 0 0;
+	position: absolute;
+	bottom: -5px;
+	z-index: 3;
+	text-align: center;
+	width: 100%;
+	height: 15px;	
+}
+.gallery .pagination a {
+	background: @color_background url(@{themeurl}/assets/img/visu/sprite.png) -30px -180px no-repeat;
+	display: inline-block;
+	margin: 0;
+	overflow: hidden;
+	width:20px; height:20px;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+.gallery .pagination a:hover,
+.gallery .pagination a.active {
+	background-position: -30px -200px;
+}

@@ -1,0 +1,56 @@
+article, 
+aside, 
+details, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+nav, 
+section { 
+	display: block;
+	padding: 0px;
+	margin: 0px;
+	border: 0px none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing : border-box;
+}
+audio,
+canvas,
+video { 
+	display: inline-block; 
+	padding: 0px;
+	margin: 0px;
+	border: 0px none;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing : border-box;
+}
+.lte7 #extra-booking-content fieldset {
+	overflow: visible;
+}
+.extra-radio > input[type="radio"],
+.extra-checkbox > input > input[type="checkbox"] {
+    -ms-filter: "alpha(opacity=0)"; 
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+.lte7 #extra-booking-content fieldset legend  {
+	margin-left: -7px;
+	padding-left: 7px;
+}
+
+/*********************
+ *
+ * IE7 
+ * 
+ ********************/
+.lte7 #header .main-navigation li,
+.lte7 #header .main-navigation li a:after {
+  display: inline;
+  zoom: 1;
+}
+.lte7 #header .main-navigation li a:after {
+  content: "·";
+}

@@ -1,0 +1,428 @@
+.background-radial(@colour) {
+	@start: lighten(@colour, 10%);
+	@end: darken(@colour, 5%);
+	background: @colour;
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end})',GradientType=1 )";
+	background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
+	background: -webkit-linear-gradient(@start, @end);
+	background: -moz-linear-gradient(@start, @end);
+	background: -o-linear-gradient(@start, @end);
+	background: -ms-linear-gradient(@start, @end);
+	background: linear-gradient(@start, @end);
+}
+/*********************
+ *
+ * GLOBAL
+ *
+ ********************/
+*,
+*:before,
+*:after {
+	margin: 0px;
+	padding: 0px;
+	border: 0px none;
+	outline: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+	display: block;
+}
+audio,
+canvas,
+video {
+	display: inline-block;
+}
+audio:not([controls]) {
+	display: none;
+}
+[hidden] {
+	display: none;
+}
+input[type="search"], input[type="email"], input[type="text"], input[type="submit"] {
+	-webkit-appearance: initial;
+}
+/* SELECTIONS */
+::-moz-selection,
+::selection {
+	background: #006778;
+	color: #FFFFFF;
+	text-shadow: none;
+}
+/*********************
+ *
+ * FONTS
+ *
+ ********************/
+@font-face {
+	font-family: "Franklin Gothic Compressed";
+	src:  url("@{themeurl}/assets/fonts/franklin.eot");
+	src:  url("@{themeurl}/assets/fonts/franklin.eot?#iefix") format("embedded-opentype"),
+				 url("@{themeurl}/assets/fonts/franklin.woff") format("woff"),
+				 url("@{themeurl}/assets/fonts/franklin.ttf") format("truetype"),
+				 url("@{themeurl}/assets/fonts/franklin.svg#franklin") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+/*********************
+ *
+ * GLOBAL
+ *
+ ********************/
+html,
+body {
+	height:100%;
+}
+body {
+	background: @color_background url(@{themeurl}/assets/img/visu/background.jpg) top center repeat-x;
+	color: @black;
+	font-family: Georgia, serif;
+	font-size: 14px;
+}
+a {
+	color: @color_link;
+	text-decoration: none;
+}
+a:hover,
+a.hover {
+	color: @color_hover;
+}
+/*********************
+ *
+ * CONTENT
+ *
+ ********************/
+.content {
+	font-size: 14px;
+	line-height: 20px;
+}
+.content p,
+.content ul,
+.content ol {
+	margin-bottom: 10px;
+}
+.content p a {
+	text-decoration: none;
+}
+.content ul {
+	margin-left: 25px;
+}
+.content ol {
+	margin-left: 30px;
+}
+.content ul li {
+	list-style: none;
+	margin-bottom: 3px;
+	text-indent: -14px;
+}
+.content ul li:before {
+	color: @color_base;
+	content: "\2022";
+	display: inline-block;
+	font-size: 11px;
+	margin-right: 10px;
+	text-indent: 0;
+	vertical-align: 1px;
+	width: 5px;
+}
+.content strong {
+	color: @dark;
+	font-weight: normal;
+}
+h1 {
+	color: @color_title;
+	font-family: "Franklin Gothic Compressed", sans-serif;
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 25px;
+	text-transform: uppercase;
+}
+.main-title {
+	border-bottom: 1px solid @color_border;
+	margin: 40px 0;
+	padding-bottom: 4px;
+}
+h2 {
+	color: @color_title;
+	font-family: "Franklin Gothic Compressed", sans-serif;
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+h3 {
+	color: @color_base;
+	font-family: Georgia, serif;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: normal;
+	line-height: 25px;
+	margin-bottom: 10px;
+}
+h4 {
+	color: @color_base;
+	font-family: "Franklin Gothic Compressed", sans-serif;
+	font-size: 16px;
+	font-weight: normal;
+	line-height: 18px;
+	text-transform: uppercase;
+}
+blockquote {
+	background: #dddddd;
+	color: #000000;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+blockquote > *:last-child {
+	margin-bottom: 0px;
+}
+.chapo {
+	color: @color_grey;
+	padding-bottom: 4px;
+	border-bottom: 1px solid @color_border;
+}
+h2.chapo {
+	padding-bottom: 10px;
+}
+.link:before {
+	content:'\203A';
+	color: #38302b;
+	display: inline-block;
+	margin-right: 4px;
+}
+.link a {
+	font-style: italic;
+}
+/* BUTTONS */
+.content p .button,
+.button,
+[type="submit"] {
+	.background-radial(@color_base);
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Georgia, serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 20px;
+	padding: 5px 20px;
+	text-decoration: none;
+	text-align: center;
+	height: 30px;
+}
+.content p .button:hover,
+.over .button,
+.button:hover,
+[type="submit"]:hover,
+[type="submit"]:focus {
+	.background-radial(@color_hover);
+	color: #FFFFFF;
+}
+.em-my-bookings .em-bookings-cancel {
+	margin-right: 10px;
+}
+.em-my-bookings form {
+	display: inline-block;
+}
+/*********************
+ *
+ * MY BOOKINGS
+ *
+ ********************/
+.em-my-bookings,
+#em-booking .text-only {
+	margin: 40px;
+}
+
+/*********************
+ *
+ * MAP
+ *
+ ********************/
+.extra-page-builder-map {
+	width: 100%;
+}
+.extra-page-builder-map * {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+.extra-page-builder-map-description {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+
+	border-top: 1px solid @color_border;
+	margin-top: 20px;
+	padding: 15px;
+}
+h2.extra-page-builder-map-title {
+	border-bottom: 1px solid @color_border;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+/*********************
+ *
+ * SEPARATOR
+ *
+ ********************/
+.extra-page-builder-separator {
+	margin: 0;
+	height: 15px;
+	width: 100%;
+	background: transparent url(@{themeurl}/assets/img/visu/shadow-horizontal.png) 0 bottom no-repeat;
+}
+
+/*********************
+ *
+ * SLIDER
+ *
+ ********************/
+.extra-slider {
+	border-bottom: 1px solid @color_border;
+	padding-bottom: 20px;
+	z-index: 1;
+}
+
+.extra-slider-auto-indicator {
+	content: '';
+	display: block;
+	width: 0%;
+	background-color: @color_hover;
+	height: 1px;
+	position: absolute;
+	bottom: -1px;
+}
+
+.extra-slider .legend {
+	background: @color_hover;
+	background: rgba(red(@color_hover), green(@color_hover), blue(@color_hover), 0.75);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-style: italic;
+	padding: 5px 10px 7px;
+}
+
+.extra-slider .pagination {
+	display: inline-block;
+	padding: 0 0;
+	position: absolute;
+	bottom: -5px;
+	z-index: 3;
+	text-align: center;
+	width: 100%;
+	height: 15px;
+}
+.extra-slider .pagination a {
+	background: @color_background url(@{themeurl}/assets/img/visu/sprite.png) -30px -180px no-repeat;
+	display: inline-block;
+	margin: 0;
+	overflow: hidden;
+	width: 20px;
+	height: 20px;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+.extra-slider .pagination a.active {
+	background-position: -30px -200px;
+}
+
+/*********************
+ *
+ * IMAGE
+ *
+ ********************/
+//.extra-page-builder-image {
+//	width: 100%;
+//}
+
+
+/*********************
+ *
+ * ACCORDION
+ *
+ ********************/
+h2.accordeon-title {
+	border-bottom: 1px solid @color_border;
+	padding-bottom: 10px;
+}
+
+.main-content .content .accordeon-wrapper .tab-title {
+	color: @color_base;
+}
+.main-content .content .accordeon-wrapper .tab-title:hover {
+	color: @color_hover;
+}
+.main-content .content .accordeon-wrapper .tab-title:before {
+	background: transparent url(@{themeurl}/assets/img/visu/sprite.png) -140px -180px no-repeat;
+	content: '';
+	display: inline-block;
+	margin-left: 5px;
+	margin-right: 10px;
+	vertical-align: -2px;
+	width: 15px;
+	height: 15px;
+}
+.main-content .content .accordeon-wrapper .open .tab-title:before {
+	background-position: -140px -195px;
+	content: '';
+}
+.main-content .content .accordeon-element {
+	border-bottom: 1px solid @color_border;
+}
+
+/*********************
+ *
+ * TABS
+ *
+ ********************/
+h2.tabs-title {
+	border-bottom: 1px solid @color_border;
+	padding-bottom: 10px;
+}
+.main-content .content .tabs-wrapper > nav {
+	margin: 10px 0;
+}
+.main-content .content .tabs-wrapper .tab-title {
+	padding: 5px 10px;
+	margin: 0 10px 10px 0;
+}
+.main-content .content .tabs-wrapper .tab-title:hover,
+.main-content .content .tabs-wrapper .tab-title.active {
+	background-color: @color_base;
+}
+
+.main-content .content .tabs-wrapper .tab-title > h3 {
+	color: @color_base;
+	font-size: 14px;
+	font-style: normal;
+}
+
+.main-content .content .tabs-wrapper .tab-title:hover > h3,
+.main-content .content .tabs-wrapper .tab-title.active > h3 {
+	color: @white;
+}
+
+/*********************
+ *
+ * EASY CLEARING
+ *
+ ********************/
+hr {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}

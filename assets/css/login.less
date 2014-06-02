@@ -1,0 +1,38 @@
+.left {
+  float: left;
+  margin-right: 20px;
+  width: 400px; 
+}
+.right {
+  float: left;
+  margin-left: 20px;
+  width: 400px; 
+}
+.content:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#loginform label {
+  color: #202020;
+  cursor: pointer;
+  display: block; 
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+#loginform input[type="text"],
+#loginform input[type="password"] {
+  border: 1px solid lighten(@color_base, 50%);
+  display: block;
+  font-size: 14px;
+  font-family: Georgia, serif;
+  line-height: 30px;
+  padding: 5px;
+  vertical-align: middle;
+  width: 295px;
+  height: 30px;
+}

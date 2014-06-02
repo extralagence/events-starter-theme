@@ -1,0 +1,482 @@
+/*********************
+ *
+ * BODY
+ * 
+ ********************/
+body {
+	margin-bottom: 500px;
+}
+.content > h2:first-of-type {
+  display: none;
+}
+/*********************
+ *
+ * MESSAGE
+ *
+ ********************/
+.em-booking-message {
+	font-size: 16px;
+	font-style: italic;
+	font-weight: normal;
+	padding: 0 20px 30px 20px;
+}
+.em-booking-message-error {
+	color: #a80202;
+}
+#em-booking > p:first-child {
+	padding-bottom: 40px;
+}
+/*********************
+ *
+ * NAVGIATION
+ *
+ ********************/
+.ticket-price {
+	display: none;
+}
+
+.em-attendee-fields h3 {
+	padding-left: 20px;
+}
+/*********************
+ *
+ * NAVGIATION
+ *
+ ********************/
+.em-booking-form-details {
+
+}
+
+#extra-booking-navigation {
+	background-color: @color_background;
+	float: left;
+	margin-top: 25px;
+	width: 280px;
+}
+.sticky-wrapper {
+	float: left;
+	width: 280px;
+}
+.stuck {
+	margin-top: 0px;
+	position: fixed;
+	top: 25px;
+}
+#extra-booking-navigation li {
+	display: list-item;
+	color: @color_grey;
+	font-family: Georgia;
+	font-size: 18px;
+	font-style: italic;
+	line-height: 40px;
+	list-style-type: decimal;
+	list-style-position: inside;
+	padding-left: 20px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 40px;
+}
+#extra-booking-navigation li a {
+	color: @color_grey;
+}
+#extra-booking-navigation li a:hover {
+	color: #38302b;
+}
+#extra-booking-navigation li.above {
+	color: #38302b;
+}
+#extra-booking-navigation li.above a {
+	color: #38302b;
+}
+#extra-booking-navigation li.active {
+	border-bottom: 1px solid @color_border;
+	color: @color_base;
+	position: relative;
+}
+#extra-booking-navigation li.active a {
+	color: @color_base;
+}
+#extra-booking-navigation li.active:after {
+	background: transparent url(@{themeurl}/assets/img/visu/sprite.png) -30px -155px no-repeat;
+	content: "";
+	position: absolute;
+	right: 0px; top: 10px;
+	width: 30px; height: 25px;
+}
+/*********************
+ *
+ * CONTENT
+ *
+ ********************/
+#extra-booking-content {
+	float: left;
+	margin-left: 30px;
+	width: 570px;
+}
+#extra-booking-content fieldset {
+	background: #ece8e6;
+	margin: 25px 20px;
+	margin-bottom: 50px;
+	overflow: auto;
+	padding: 0px;
+}
+#extra-booking-content fieldset legend  {
+	background: @color_background;
+	border-bottom: 1px solid @color_border;
+	display: block;
+	color: @color_grey;
+	font-family: Georgia;
+	font-size: 18px;
+	font-style: italic;
+	float: none;
+	line-height: 40px;
+	width: 100%;
+	height: 40px;
+}
+#extra-booking-content fieldset > h3 {
+  margin: 20px 20px -15px 20px;
+}
+#extra-booking-content .conditional {
+	margin: 20px;
+	margin-top: -20px;
+}
+#extra-booking-content .conditional:last-child {
+	margin-bottom: 0px;
+}
+#extra-booking-content p {
+	margin: 20px;
+}
+#extra-booking-content p.unavailable,
+#extra-booking-content p.unavailable * {
+	color: #CCCCCC;
+}
+#extra-booking-content label {
+	color: @dark;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+	width: auto;
+	float: none;
+}
+#extra-booking-content p > .input,
+#extra-booking-content p .em-date-input-loc,
+#extra-booking-content p .em-time-input,
+#extra-booking-content p > select {
+	color: #38302b;
+	border: 1px solid @color_border;
+	display: block;
+	font-size: 14px;
+	font-family: Georgia, serif;
+	line-height: 30px;
+	padding: 5px;
+	vertical-align: middle;
+	width: 295px;
+	height: 30px;
+}
+#extra-booking-content p > select,
+#extra-booking-content p > select * {
+	cursor: pointer;
+	padding: 5px;
+}
+#extra-booking-content p.input-textarea > textarea {
+	line-height: 20px;
+	width: 100%;
+	height: 100px;
+}
+#extra-booking-content p > .input:focus,
+#extra-booking-content p > select:focus {
+	border-color: #38302b;
+}
+.em-form-required {
+	color: @color_base;
+}
+#extra-booking-content p.input-dbem_extra_address > .input,
+#extra-booking-content p.input-dbem_extra_address2 > .input {
+	width: 100%;
+}
+/*#extra-booking-content p.input-field-extra_postal_code > .input {
+	width: 170px;
+}*/
+#extra-booking-content  .input-radio > label {
+	display: none;
+}
+#extra-booking-content .input-group {
+	display: block;
+}
+#extra-booking-content  .input-radio .input-group > label,
+#extra-booking-content  .input-checkbox > label {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	vertical-align: top;
+}
+#extra-booking-content .inactive input[type="text"] {
+  background-color: #dddddd;
+  border-color: #b0b0b0;
+  color: #b0b0b0;
+  opacity: 0.5;
+  cursor: default;
+}
+#extra-booking-content .inactive .extra-checkbox {
+  opacity: 0.5;
+}
+#extra-booking-content .inactive label {
+  color: #b0b0b0;
+  opacity: 0.5;
+  cursor: default;
+
+}
+/*********************
+ *
+ * SUBMIT
+ *
+ ********************/
+.em-booking-gateway-form {
+	margin-top: 30px;
+}
+.em-booking-buttons {
+	margin: 30px;
+	text-align: left;
+}
+input[readonly] {
+	opacity: 0.5;
+}
+
+#em-booking-gateway-offline {
+	margin-left: 30px;
+}
+/*********************
+ *
+ * RADIO
+ *
+ ********************/
+.extra-radio > input[type="radio"],
+.extra-checkbox > input[type="checkbox"] {
+	cursor: pointer;
+	opacity: 0;
+	width: 30px;
+	height: 30px;
+}
+.extra-radio,
+.extra-checkbox {
+	background: transparent url(@{themeurl}/assets/img/visu/sprite.png) 0 0 no-repeat;
+	display:inline-block;
+	vertical-align: -10px;
+	width: 30px;
+	height: 30px;
+}
+.extra-checkbox.focus {
+	background-position: 0 -30px;
+}
+.extra-radio {
+	background-position: 0 -120px;
+}
+.extra-radio.focus {
+	background-position: 0 -150px;
+}
+.checked {
+	background-position: 0 -60px;
+}
+.checked.focus {
+	background-position: 0 -90px;
+}
+.selected {
+	background-position: 0 -180px;
+}
+.selected.focus {
+	background-position: 0 -210px;
+}
+/*********************
+ *
+ * DATE
+ *
+ ********************/
+#extra-booking-content .input-date .input {
+	display: inline-block;
+	width: 295px;
+}
+#extra-booking-content .input-date .ui-datepicker-trigger {
+	background: transparent;
+	display: inline-block;
+	position: relative;
+	top: 3px; left: -25px;
+}
+/*********************
+ *
+ * SLIDER
+ *
+ ********************/
+#extra-booking-content .input-slider .slider {
+	background: #38302b;
+	border: 0px none;
+	display: inline-block;
+	margin-right: 10px;
+	width: 225px;
+	height: 1px;
+	position: relative;
+}
+#extra-booking-content .input-slider .ui-slider-handle {
+	background: transparent url(@{themeurl}/assets/img/visu/sprite.png) 0 -180px no-repeat;
+	border: 0px none;
+	cursor: pointer;
+	display: block;
+	margin-left: -15px;
+	position: absolute;
+	top: -15px;
+	width: 30px;
+	height: 30px;
+}
+#extra-booking-content .input-slider .ui-slider-handle.ui-state-hover {
+	background-position: 0 -210px;
+}
+#extra-booking-content .input-slider .ui-slider-handle.ui-state-active {
+	background-position: 0 -240px;
+}
+#extra-booking-content .input-slider .input {
+	display: inline-block;
+	text-align: center;
+	width: 60px;
+}
+/*********************
+ *
+ * SUMMARY BLOC
+ *
+ ********************/
+.summary-bloc {
+	margin: 20px;
+}
+.summary-bloc h3 {
+	border-bottom: 1px solid @color_border;
+	color: @dark;
+	font-size: 16px;
+	font-style: none;
+	font-weight: normal;
+	line-height: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 6px;
+}
+#extra-booking-content .summary-bloc p {
+	color: @color_grey;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 0px;
+	margin-bottom: 10px;
+}
+#extra-booking-content .summary-bloc .diet {
+	margin-bottom: 0px;
+}
+#extra-booking-content .summary-bloc .diet-text {
+	font-style: italic;
+	padding: 0 10px;
+}
+#extra-booking-content .summary-bloc .guest-list {
+	margin: 0 0 20px 0;
+}
+#extra-booking-content .summary-bloc .guest-list li {
+	color: @color_grey;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 0px;
+	margin-left: 20px;
+}
+#extra-booking-content .summary-bloc .name,
+#extra-booking-content .summary-bloc .company,
+#extra-booking-content .summary-bloc .job_title,
+#extra-booking-content .summary-bloc .address,
+#extra-booking-content .summary-bloc .email,
+#extra-booking-content .summary-bloc .tel,
+#extra-booking-content .summary-bloc .mobile {
+	padding-left: 30px;
+	position: relative;
+}
+#extra-booking-content .summary-bloc .email {
+	font-style: italic;
+}
+#extra-booking-content .summary-bloc .name:before,
+#extra-booking-content .summary-bloc .company:before,
+#extra-booking-content .summary-bloc .address:before,
+#extra-booking-content .summary-bloc .email:before,
+#extra-booking-content .summary-bloc .tel:before,
+#extra-booking-content .summary-bloc .mobile:before {
+	background: transparent url(@{themeurl}/assets/img/visu/sprite.png) -30px 0 no-repeat;
+	content: "";
+	display: block;
+	position: absolute;
+	top: -5px; left: 0px;
+	width: 30px;
+	height: 30px;
+}
+#extra-booking-content .summary-bloc .company:before {
+	background-position: -60px 0;
+}
+#extra-booking-content .summary-bloc .address:before {
+	background-position: -30px -90px;
+}
+#extra-booking-content .summary-bloc .email:before {
+	background-position: -30px -60px;
+}
+#extra-booking-content .summary-bloc .tel:before {
+	background-position: -30px -120px;
+}
+#extra-booking-content .summary-bloc .mobile:before {
+	background-position: -30px -30px;
+}
+
+
+/*********************
+ *
+ * LOADING
+ *
+ ********************/
+#em-loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(red(@color_background), green(@color_background), blue(@color_background), 0.7) url(@{themeurl}/assets/img/form-loader.gif) center center no-repeat;
+	z-index: 10000;
+}
+
+/*********************
+ *
+ * ATTENDEES
+ *
+ ********************/
+#extra-ticket-place.extra-single-ticket  .em-attendee-fields > h3 {
+	display: none;
+}
+
+
+/**********
+ *IE7
+ * *******/
+.lte7 .extra-radio,
+.lte7 .extra-checkbox,
+.lte7 #extra-booking-content .input-radio .input-group > label,
+.lte7 #extra-booking-content .input-checkbox > label,
+.lte7 #extra-booking-content .input-date .input,
+.lte7 #extra-booking-content .input-date .ui-datepicker-trigger,
+.lte7 #extra-booking-content .input-slider .slider,
+.lte7 #extra-booking-content .input-slider .input {
+	display: inline;
+	zoom: 1;
+}
+
+
+
+
+/*********************
+ *
+ * EASY CLEARING
+ *
+ ********************/
+.em-booking-form-details:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}

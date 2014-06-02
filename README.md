@@ -1,4 +1,4 @@
-events-starter-theme
-====================
+starter-theme
+=============
 
-Extra starter theme for Events Manager
+Starter child theme for Extra theme
