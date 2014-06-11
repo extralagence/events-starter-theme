@@ -52,6 +52,15 @@ function extra_emp_form_validate_field($result, $field, $value, $EM_Form) {
 		}
 	}
 
+	//ACTIVITIES AND RESTAURANTS
+	//if ($metas['activities'] ==)
+
+	if ($field['fieldid'] == 'activity_selector') {
+		var_dump($result);
+		var_dump($field);
+		var_dump($value);
+	}
+
 	return $result;
 }
 add_filter('emp_form_validate_field', 'extra_emp_form_validate_field', 10, 4);

@@ -15,7 +15,10 @@ add_action('em_booking_form_ticket_spaces', 'extra_ticket_form',1,1);
  * This variable can be overriden, by hooking into the em_booking_form_tickets_cols filter and adding your collumns into this array.
  * Then, you should create a em_booking_form_ticket_field_arraykey action for your collumn data, which will pass a ticket and event object.
  */
-$collumns = EM_Tickets::get_ticket_collumns($EM_Event); //array of collumn type => title
+$collumns = array( 'type' => __('Ticket Type','dbem'), 'price' => __('Price','dbem'), 'spaces' => __('Spaces','dbem'));
+if( $EM_Event->is_free() ) unset($collumns['price']); //add event price
+$collumns = apply_filters('em_booking_form_tickets_cols', $collumns, $EM_Event );
+
 foreach( $collumns as $type => $name ): ?>
 	<?php
 	//output collumn by type, or call a custom action

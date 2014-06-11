@@ -147,4 +147,106 @@ function extra_forms_output_field_input($return, $fields, $field, $post) {
 	return $return;
 }
 add_action("emp_forms_output_field_input", "extra_forms_output_field_input", 10, 4);
+
+
+
+/**********************
+ *
+ *
+ *
+ * CUSTOM INPUT
+ *
+ *
+ *
+ *********************/
+function extra_input_activities_restaurant($return, $fields, $field, $post) {
+
+
+	// GET THE CORRECT FIELD
+	if($field["fieldid"] == "activity_selector") {
+		$return = "";
+
+		////
+		//// ACTIVITIES
+		////
+
+		// GET ALL ACTIVITIES
+		$activities = get_posts(array(
+			'post_type' => 'activity',
+			'posts_per_page' => -1
+		));
+
+		// PREPARE THE SELECT
+		//$return .= '<p>';
+		//<label for="activities">'.__("Choix de l'activitié", "extra").'</label>';
+		$return .= '<select id="'.$field["fieldid"].'" class="input activities" name="'.$field["fieldid"].'">';
+
+		// DEFAULT VALUE
+		$return .= '<option value="">'.__("Choisissez une activité", "extra").'</option>';
+
+		// LOOP IN ALL ACTIVITIES
+		foreach($activities as $activity) {
+
+			// GET CONNECTED ITEMS
+			$connected = get_posts(array(
+				'connected_type' => 'restaurant_to_activity',
+				'connected_items' => $activity,
+				'nopaging' => true
+			));
+			$connected_output = '';
+			foreach($connected as $connected_item) {
+				$connected_output .= $connected_item->post_name.' ';
+
+			}
+			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$activity->post_name.'">'.$activity->post_title.'</option>';
+		}
+
+		$return .= '</select>';
+	}
+
+	if($field["fieldid"] == "restaurant_selector") {
+
+		$return = "";
+
+		////
+		//// RESTAURANTS
+		////
+
+		// GET ALL RESTAURANTS
+		$restaurants = get_posts(array(
+			'post_type' => 'restaurant',
+			'posts_per_page' => -1
+		));
+
+		// PREPARE THE SELECT
+		//$return .= '<p>';
+		//<label for="restaurants">'.__("Choix du restaurant", "extra").'</label>';
+		$return .= '<select id="'.$field["fieldid"].'" class="input restaurants" name="'.$field["fieldid"].'">';
+
+		// DEFAULT VALUE
+		$return .= '<option value="">'.__("Choisissez un restaurant", "extra").'</option>';
+
+		// LOOP IN ALL ACTIVITIES
+		foreach($restaurants as $restaurant) {
+
+			// GET CONNECTED ITEMS
+			$connected = get_posts(array(
+				'connected_type' => 'restaurant_to_activity',
+				'connected_items' => $restaurant,
+				'nopaging' => true
+			));
+			$connected_output = '';
+			foreach($connected as $connected_item) {
+				$connected_output .= $connected_item->post_name.' ';
+
+			}
+			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$restaurant->post_name.'">'.$restaurant->post_title.'</option>';
+		}
+		$return .= '</select>';
+
+		$return .= '<p><a class="button reset" href="#">'.__("Réinitialiser", "extra").'</a></p>';
+	}
+	return $return;
+}
+add_action("emp_forms_output_field_input", "extra_input_activities_restaurant", 10, 4);
 ?>

@@ -16,7 +16,7 @@ global $extra_options;
         <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
          
         <!-- TITLE -->       
-        <title><?php wp_title( '|', true, 'right' ); ?><?php bloginfo('name'); ?></title>
+        <title><?php wp_title( '|', true, 'right' ); ?></title>
         
         <!-- REMOVE NO-JS -->
         <!--noptimize--><script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'') + ' js';</script><!--/noptimize-->

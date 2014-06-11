@@ -107,6 +107,16 @@ include_once THEME_PATH . '/modules/event/front/custom-fields.php';
  *
  *
  *
+ * PAYBOX
+ *
+ *
+ *
+ *********************/
+include_once THEME_PATH . '/modules/event/front/paybox.php';
+/**********************
+ *
+ *
+ *
  * BETTER SAVE OF CUSTOM FORMS
  * 
  *

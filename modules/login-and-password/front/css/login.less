@@ -1,0 +1,71 @@
+.background-radial(@colour) {
+	@start: lighten(@colour, 10%);
+	@end: darken(@colour, 5%);
+	background: @colour;
+	filter: ~"progid:DXImageTransform.Microsoft.gradient( startColorstr='@{start}', endColorstr='@{end})',GradientType=1 )";
+	background: -webkit-gradient(linear, left top, left bottom, from(@start), to(@end));
+	background: -webkit-linear-gradient(@start, @end);
+	background: -moz-linear-gradient(@start, @end);
+	background: -o-linear-gradient(@start, @end);
+	background: -ms-linear-gradient(@start, @end);
+	background: linear-gradient(@start, @end);
+}
+
+/*********************
+ *
+ * SURCHARGE
+ *
+ ********************/
+body.login {
+	background: @color_base;
+}
+
+html body.login #login h1 {
+	margin: 30px 0 0;
+}
+html body.login #login > h1 > a {
+	background-image: url(@{themeurl}/assets/img/visu/logo.png);
+	background-size: auto auto;
+	background-position:center center;
+	background-color: #fff;
+	margin: 0 auto;
+	width: 320px;
+	height: 216px;
+}
+html .login #login #loginform {
+	margin-top: 0;
+	box-shadow: none;
+}
+
+html .login #backtoblog a, html .login #nav a {
+	color: @grey;
+}
+
+html .login #backtoblog a:hover, html .login #nav a:hover {
+	color: @white;
+}
+
+/* BUTTONS */
+html .login form .submit .button,
+html .login form .submit [type="submit"] {
+	.background-radial(@color_base);
+	color: #FFFFFF;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Georgia, serif;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 20px;
+	padding: 5px 20px;
+	text-decoration: none;
+	text-align: center;
+	height: 30px;
+	border: none;
+	border-radius: 0;
+}
+html .login form .submit .button:hover,
+html .login form .submit [type="submit"]:hover,
+html .login form .submit [type="submit"]:focus {
+	.background-radial(@color_hover);
+	color: #FFFFFF;
+}

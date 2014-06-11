@@ -1,0 +1,52 @@
+.item {
+	float: left;
+	margin-bottom: 50px;
+	width: 420px;
+}
+.item:nth-child(even) {
+	margin-left: 40px;
+}
+.item:nth-child(odd) {
+	clear: left;
+}
+
+/* LINK */
+.gallery {
+	border-bottom: 1px solid #cccccc;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	margin-top: 0;
+	position: relative;
+	top: 0px; left: 0px;
+	width: 420px; height: 235px;
+	z-index: 1;
+}
+.gallery a {
+	display: block;
+	position: relative;
+}
+.gallery a .details {
+	display: none;
+	background: rgba(0, 0, 0, 0.7);
+	line-height: 235px;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+.gallery a:hover .details {
+	display: block;
+}
+.gallery a .details span {
+	color: #FFFFFF;
+	font-size: 15px;
+	font-style: italic;
+	display: inline-block;
+	vertical-align: center;
+}
+.gallery a img {
+	display: block;
+}

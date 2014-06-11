@@ -58,4 +58,33 @@ add_filter('extra_add_global_options_section', function ($sections) {
 
 	return $sections;
 });
+
+function extra_setup() {
+	// LANGUAGE
+	load_theme_textdomain('extra', get_template_directory().'/includes/lang');
+
+	// DEFAULT POST THUMBNAIL SIZE
+	add_theme_support('post-thumbnails', array('post', 'page', 'activity', 'restaurant'));
+
+	// AUTO RSS
+	add_theme_support( 'automatic-feed-links' );
+
+	// HTML 5
+	add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
+
+	// NAVIGATION MENUS
+	register_nav_menus( array(
+		'main' => 'Principale',
+		'mobile' => 'Mobile',
+		'footer' => 'Pied de page'
+	));
+
+	// CAP
+	$editor = get_role( 'editor' );
+	$editor->add_cap( 'manage_options' );
+
+	global $content_width;
+	$content_width = 540;
+}
+add_action('after_setup_theme', 'extra_setup', 1);
 ?>

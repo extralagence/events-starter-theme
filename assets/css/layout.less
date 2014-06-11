@@ -35,20 +35,26 @@
 #content {
 	padding: 40px;
 }
-
+/*********************
+ *
+ * 404
+ *
+ ********************/
+.error404 .main-wrapper > .main-content {
+	padding: 0;
+}
+.error404 #footer {
+margin-top: -16px;
+}
 /*********************
  *
  * FORM
  *
  ********************/
-.main-wrapper .wpcf7 {
-	background: #ece8e6;
-	padding: 20px;
+form p {
+	margin: 20px;
 }
-.main-wrapper .wpcf7 p {
-	margin: 20px 0;
-}
-.main-wrapper .wpcf7 label {
+form label {
 	color: #202020;
 	cursor: pointer;
 	display: block;
@@ -56,6 +62,83 @@
 	font-weight: normal;
 	line-height: 20px;
 	margin-bottom: 5px;
+}
+form fieldset {
+	background: #ece8e6;
+	margin: 25px 20px;
+	margin-bottom: 50px;
+	overflow: auto;
+	padding: 0px;
+}
+form fieldset legend  {
+	background: @color_background;
+	border-bottom: 1px solid @color_border;
+	display: block;
+	color: @color_grey;
+	font-family: Georgia;
+	font-size: 18px;
+	font-style: italic;
+	float: none;
+	line-height: 40px;
+	width: 100%;
+	height: 40px;
+}
+form fieldset > h3 {
+  margin: 20px 20px -15px 20px;
+}
+form select,
+form input[type="email"],
+form input[type="password"],
+form input[type="text"],
+form textarea {
+	border: 1px solid @color_border;
+	color: #101010;
+	font-family: Georgia, serif;
+	font-size: 14px;
+	padding: 5px 10px;
+}
+form select,
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+	width: 325px;
+	height: 35px;
+}
+form textarea {
+	width: 530px;
+}
+form select,
+form select * {
+	cursor: pointer;
+	padding: 5px;
+}
+form input[disabled],
+form select[disabled],
+form textarea[disabled] {
+	border-color: @grey;
+	color: @grey;
+}
+.message {
+	border: 1px solid @grey;
+	margin: 30px 0;
+	padding: 30px;
+}
+.message.success {
+	background-color: #c3ff88;
+	border-color: #8dff1c;
+}
+.message.errors {
+	background-color: #ffb78c;
+	border-color: #ff853c;
+}
+/*********************
+ *
+ * CONTACT FORM 7
+ *
+ ********************/
+.main-wrapper .wpcf7 {
+	background: #ece8e6;
+	padding: 1px 0;
 }
 .main-wrapper .wpcf7 .star {
 	color: #6b6b6b;
@@ -140,6 +223,12 @@
 }
 .main-wrapper .wpcf7 .wpcf7-validation-errors {
 	color: #c71414;
+}
+
+.main-wrapper .wpcf7 .message {
+	border: none;
+	padding: 0;
+	margin: 0;
 }
 
 /*********************

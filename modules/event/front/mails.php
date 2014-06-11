@@ -71,7 +71,7 @@ function extra_booking_email_messages($msg, $EM_Booking) {
 
 			$user_msg .= '<p>'.__("Cher", "extra").' '.reset($user_meta['first_name']).' '.reset($user_meta['last_name']).'</p>
 			';	
-			$user_msg .= '<p>'.__("Nous sommes ravis que vous participiez à notre événement", "extra").'</p><p>'.__("Veuillez garder une copie de cette confirmation pour vos dossiers :", "extra").'</p>
+			$user_msg .= '<p>'.__("Nous sommes ravis que vous participiez à notre événement", "extra").'</p><p>'.__("Veuillez garder une copie de cette confirmation pour vos dossiers.", "extra").'</p>
 			';
 
 			$user_msg .= extra_get_resume_booking_mail($EM_Booking, $date_format);
@@ -121,8 +121,50 @@ function extra_get_footer_mail($EM_Booking, $date_format) {
 	return $user_msg;
 }
 
+/**
+ * @param $EM_Booking EM_Booking
+ * @param $date_format
+ *
+ * @return string
+ */
+function extra_get_resume_attendee_mail($EM_Booking, $date_format) {
+	$attendees = $EM_Booking->booking_meta['attendees'];
+	$attendees = array_pop($attendees);
+
+	$user_msg = '';
+	if (isset($attendees[1]) && !empty($attendees[1])) {
+		$second_attendee = $attendees[1];
+		if (!empty($second_attendee)&& !empty($second_attendee['extra_attendee_first_name']) && !empty($second_attendee['extra_attendee_last_name'])) {
+			$user_msg .= '<p>'.__("Vous avez reservé au nom des personnes suivantes :", "extra").'</p>
+			';
+
+			$user_msg .= '<ul>
+			';
+			$first = true;
+			foreach ($attendees as $attendee) {
+				$first_name = $attendee['extra_attendee_first_name'];
+				$last_name = $attendee['extra_attendee_last_name'];
+
+				$first_msg = '';
+				if ($first) {
+					$first = false;
+					$first_msg = ' '.__("(Vous)", "extra");
+				}
+				$user_msg .= '<li>'.$first_name.' '.$last_name.$first_msg.'</li>
+				';
+			}
+			$user_msg .= '</ul>
+			';
+			$user_msg .= '<p>'.__("Avec comme options :", "extra").'</p>
+			';
+		}
+	}
+	return $user_msg;
+}
+
 function extra_get_resume_booking_mail($EM_Booking, $date_format) {
-	$user_msg = '<ul>';
+	$user_msg = extra_get_resume_attendee_mail($EM_Booking, $date_format);
+	$user_msg .= '<ul>';
 	// HOSTING
 	if (!empty($EM_Booking->booking_meta['booking']['extra_hosting'])) {
 		// DAYS NUMBER TO STAY AT THE HOTEL
@@ -159,6 +201,33 @@ function extra_get_resume_booking_mail($EM_Booking, $date_format) {
 	} else {
 		$user_msg .= '<li>'.__("Vous n'assisterez pas au dîner de gala", "extra").'</li>';
 	}
+
+	$activity = null;
+	$activity_slug = $EM_Booking->booking_meta['booking']['activity_selector'];
+	$activities = get_posts(array(
+		'name' => $activity_slug,
+		'post_type' => 'activity',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	));
+	if ($activities) {
+		$activity = $activities[0];
+		$user_msg .= '<li>'.__("Vous participerez à ", "extra").$activity->post_title.'</li>';
+	}
+
+	$restaurant = null;
+	$restaurant_slug = $EM_Booking->booking_meta['booking']['restaurant_selector'];
+	$restaurants = get_posts(array(
+		'name' => $restaurant_slug,
+		'post_type' => 'restaurant',
+		'post_status' => 'publish',
+		'numberposts' => 1
+	));
+	if ($restaurants) {
+		$restaurant = $restaurants[0];
+		$user_msg .= '<li>'.__("Vous avez choisi le restaurant ", "extra").$restaurant->post_title.'</li>';
+	}
+
 	$user_msg .= '</ul>
 	';
 	return $user_msg;

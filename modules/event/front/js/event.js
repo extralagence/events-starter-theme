@@ -13,7 +13,6 @@ $(document).ready(function(){
 	 * PRESET FIRST ATTENDEE
 	 *
 	 ********************/
-	console.log(extra_booking_datas);
 	if (extra_booking_datas['extra_first_name'] != '') {
 		$('.em-first-attendee-fields .input-field-extra_attendee_first_name input').val(extra_booking_datas['extra_first_name']);
 	}
@@ -44,6 +43,84 @@ $(document).ready(function(){
 	$('#extra-booking-content p .input-group > input[type="radio"], #extra-booking-content .input-group > input[type="checkbox"]').extraCheckbox();
 
 	var _slider = $('<div class="slider"></div>');
+
+
+	/*********************
+	 *
+	 * ACTIVITIES & RESTAURANTS
+	 *
+	 ********************/
+	$("#booking-meal").each(function(index) {
+		var container = $(this);
+		var activities = $("#activity_selector");
+		var restaurants = $("#restaurant_selector");
+		var both = activities.add(restaurants);
+		//var input = $("#activity_selector").hide();
+		var firstClick = false;
+		activities.change(function(){
+			var current = activities.val();
+			if(current != "") {
+				activities.attr("disabled", "disabled");
+				restaurants.find("option").attr("disabled", "disabled").filter("[data-connected~="+current+"]").removeAttr("disabled");
+			}
+		});
+		restaurants.change(function(){
+			var current = restaurants.val();
+			if(current != "") {
+				restaurants.attr("disabled", "disabled");
+				activities.find("option").attr("disabled", "disabled").filter("[data-connected~="+current+"]").removeAttr("disabled");
+			}
+		});
+		both.change(function(){
+			var activitiesTxt = "";
+			activitiesTxt = activities.find("option:selected").filter(function(){
+				return $(this).val() != "";
+			}).text();
+			var restaurantsTxt = "-";
+			restaurantsTxt = restaurants.find("option:selected").filter(function(){
+				return $(this).val() != "";
+			}).text();
+			/*if(activitiesTxt != "" || restaurantsTxt != "") {
+			 input.val(activitiesTxt + " / " + restaurantsTxt);
+			 } else {
+			 input.val("");
+			 }*/
+		});
+		container.find(".reset").click(function(){
+			activities.removeAttr('disabled').val("").find("option").removeAttr('disabled');
+			restaurants.removeAttr('disabled').val("").find("option").removeAttr('disabled');
+			both.change();
+			return false;
+		});
+
+		/*********************
+		 *
+		 * REMOVE DISABLE WHEN PUSH
+		 *
+		 ********************/
+		$("#em-booking-form").submit(function(){
+			both.filter(":disabled").removeAttr("disabled").addClass("disabled");
+		});
+		$(document).on("em_booking_ajax_complete", function(){
+			both.filter(".disabled").removeClass("disabled").attr("disabled", "disabled");
+		});
+	});
+
+	if(window.location.hash != "") {
+		var hash = window.location.hash;
+		var parts = hash.split("/");
+		if(parts.length == 3) {
+			switch(parts[1]) {
+				case "activite":
+					$("#activity_selector").val(parts[2]).change();
+					break;
+				case "restaurant":
+					$("#restaurant_selector").val(parts[2]).change();
+					break;
+			}
+		}
+	}
+
 	/*********************
 	 *
 	 * GUESTS SLIDER

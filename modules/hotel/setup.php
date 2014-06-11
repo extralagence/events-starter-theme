@@ -36,7 +36,7 @@ function extra_hotel() {
 		),
 		'has_archive' => false,
 		'hierarchical' => false,
-		'menu_position' => 31,
+		'menu_position' => 24,
 		'menu_icon' => 'dashicons-admin-home',
 		'supports' => array('title', 'editor')
 	); 
