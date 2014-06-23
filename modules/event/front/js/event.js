@@ -454,7 +454,21 @@ $(document).ready(function(){
 			sumDiet.hide();
 			sumDietTxt.hide();
 		}
-		
+
+		var sumActivityAndRestaurant = summary.find(".activity-and-restaurant");
+		var sumActivity = summary.find(".activity");
+		var sumRestaurant = summary.find(".restaurant");
+		var activity = $("#activity_selector");
+		var restaurant = $("#restaurant_selector");
+
+
+		sumActivityAndRestaurant.hide();
+		if(activity.val() != null && activity.val() != "" && restaurant.val() != null && restaurant.val() !=  "") {
+			sumActivityAndRestaurant.show();
+			sumActivity.html(activity.find('option[value="'+activity.val()+'"]').html());
+			sumRestaurant.html(restaurant.find('option[value="'+restaurant.val()+'"]').html());
+		}
+
 		summary.find(".total-price .price").text(priceTotal + " €");
 		
 		$.waypoints('refresh');

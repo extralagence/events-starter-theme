@@ -143,3 +143,16 @@ add_filter('extra_page_builder_gap', function ($width) {
  *
  *********************/
 include_once 'setup/admin/setup.php';
+/**********************
+ *
+ *
+ *
+ * FAVICON
+ *
+ *
+ *
+ *********************/
+function extra_favicon() {
+	echo '<link rel="shortcut icon" type="image/x-icon" href="'.get_stylesheet_directory_uri().'/assets/img/visu/favicon.ico" />';
+}
+add_action('wp_head', 'extra_favicon');

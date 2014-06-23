@@ -126,6 +126,7 @@ function extra_em_booking_form_custom($EM_Event) {
 			<ul class="guest-list"></ul>
 			<p class="diet"><?php _e("J'ai un régime spécifique:", "extra"); ?></p>
 			<p class="diet-text"></p>
+			<p class="activity-and-restaurant"><?php _e('J\'ai choisi <span class="activity"></span> et  <span class="restaurant"></span>'); ?></p>
 		</div>
 		<div class="summary-bloc" id="price-summary">
 			<h3><?php _e("Détail des montants", "extra"); ?></h3>
