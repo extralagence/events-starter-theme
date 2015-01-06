@@ -95,17 +95,16 @@ function _blank_less_vars($vars, $handle) {
 
 	// THEME COLOR VARS
 	$vars['highlight'] = '#00546d';
-	$vars['color_base'] = '#00546d';
-	$vars['color_hover'] = '#5d0135';
+	$vars['color_base'] = '#37346b';
+	$vars['color_hover'] = '#2976a6';
 	$vars['color_grey'] = '#606060';
-	$vars['color_background'] = '#f4f2f0';
+	$vars['color_background'] = '#fefefc';
 
 	$vars['color_border'] = '#aac2c8';
 	$vars['color_title'] = $vars['color_hover'];
-	$vars['color_link'] = $vars['color_base'];
+	$vars['color_link'] = $vars['color_hover'];
 	return $vars;
 }
-
 add_filter('less_vars', '_blank_less_vars', 10, 3);
 
 /**********************

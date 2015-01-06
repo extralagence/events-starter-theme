@@ -81,10 +81,11 @@ input[type="search"], input[type="email"], input[type="text"], input[type="submi
  ********************/
 html,
 body {
-	height:100%;
+	height: 100%;
 }
 body {
-	background: @color_background url(@{themeurl}/assets/img/visu/background.jpg) top center repeat-x;
+	background-color: @color_hover;
+//	background: @color_background url(@{themeurl}/assets/img/visu/background.jpg) top center repeat-x;
 	color: @black;
 	font-family: Georgia, serif;
 	font-size: 14px;
@@ -177,6 +178,17 @@ h4 {
 	line-height: 18px;
 	text-transform: uppercase;
 }
+h1.border-title,
+h2.border-title,
+h3.border-title,
+h4.border-title,
+h5.border-title,
+h6.border-title {
+	border-bottom: 1px solid @color_border;
+	padding-bottom: 4px;
+}
+
+
 blockquote {
 	background: #dddddd;
 	color: #000000;
@@ -207,6 +219,8 @@ h2.chapo {
 /* BUTTONS */
 .content p .button,
 .button,
+.link-button,
+.content .link-button,
 [type="submit"] {
 	.background-radial(@color_base);
 	color: #FFFFFF;
@@ -224,6 +238,8 @@ h2.chapo {
 .content p .button:hover,
 .over .button,
 .button:hover,
+.link-button:hover,
+.content .link-button:hover,
 [type="submit"]:hover,
 [type="submit"]:focus {
 	.background-radial(@color_hover);
@@ -347,6 +363,16 @@ h2.extra-page-builder-map-title {
 //.extra-page-builder-image {
 //	width: 100%;
 //}
+img.alignleft {
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+img.alignright {
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 20px;
+}
 
 
 /*********************

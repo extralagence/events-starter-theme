@@ -189,7 +189,7 @@ $extra_event_metabox = new ExtraMetaBox(array(
 	'fields' => array(
 		array(
 			'type' => 'bloc',
-			'label' => __("Arrivée", "extra-admin"),
+			'title' => __("Arrivée", "extra-admin"),
 			'subfields' => array(
 				array(
 					'type' => 'date',
@@ -217,7 +217,7 @@ $extra_event_metabox = new ExtraMetaBox(array(
 		),
 		array(
 			'type' => 'bloc',
-			'label' => __("Départ", "extra-admin"),
+			'title' => __("Départ", "extra-admin"),
 			'subfields' => array(
 				array(
 					'type' => 'date',
@@ -243,24 +243,24 @@ $extra_event_metabox = new ExtraMetaBox(array(
 				),
 			)
 		),
-		array(
-			'type' => 'bloc',
-			'label' => __("Prix", "extra-admin"),
-			'subfields' => array(
-				array(
-					'type' => 'slider',
-					'name' => 'extra_cocktail_price',
-					'max' => '500',
-					'label' => __("Pour le cocktail", "extra-admin")
-				),
-				array(
-					'type' => 'slider',
-					'name' => 'extra_gala_price',
-					'max' => '500',
-					'label' => __("Pour le gala", "extra-admin")
-				)
-			)
-		),
+//		array(
+//			'type' => 'bloc',
+//			'title' => __("Prix", "extra-admin"),
+//			'subfields' => array(
+//				array(
+//					'type' => 'slider',
+//					'name' => 'extra_cocktail_price',
+//					'max' => '500',
+//					'label' => __("Pour le cocktail", "extra-admin")
+//				),
+//				array(
+//					'type' => 'slider',
+//					'name' => 'extra_gala_price',
+//					'max' => '500',
+//					'label' => __("Pour le gala", "extra-admin")
+//				)
+//			)
+//		),
 	)
 ));
 

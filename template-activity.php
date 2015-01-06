@@ -1,6 +1,6 @@
 <?php
 /*
-Template name: Liste des activitées
+Template name: Liste des activités
 */
 global $extra_options, $activity_metabox;
 the_post();

@@ -12,8 +12,8 @@ function extra_hotel() {
 	$labels = array(
 		'name' => __('Hôtel', 'extra-admin'),
 		'singular_name' => __('Hôtel', 'extra-admin'),
-		'add_new' => __('Nouvel hôtel', 'extra-admin'),
-		'add_new_item' => __('Ajouté un hôtel', 'extra-admin'),
+		'add_new' => __('Ajouter un hôtel', 'extra-admin'),
+		'add_new_item' => __('Ajouter un hôtel', 'extra-admin'),
 		'edit_item' => __('Modifier l\'hôtel', 'extra-admin'),
 		'new_item' => __('Nouvel hôtel', 'extra-admin'),
 		'all_items' => __('Tous les hôtels', 'extra-admin'),
