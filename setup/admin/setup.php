@@ -87,4 +87,3 @@ function extra_setup() {
 	$content_width = 540;
 }
 add_action('after_setup_theme', 'extra_setup', 1);
-?>
