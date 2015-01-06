@@ -289,4 +289,45 @@ function extra_event_enqueue_assets() {
 }
 add_action('wp_enqueue_scripts', 'extra_event_enqueue_assets');
 
+
+function the_extra_booking_datas($id) {
+	global $extra_event_metabox;
+	$meta = $extra_event_metabox->the_meta($id);
+
+	// CUSTOM METAS
+	$extra_arrival_date_max = $meta['extra_arrival_date_max'];
+	$extra_arrival_date_min = $meta['extra_arrival_date_min'];
+	$extra_arrival_time_max = $meta['extra_arrival_time_max'];
+	$extra_arrival_time_min = $meta['extra_arrival_time_min'];
+	$extra_departure_date_max = $meta['extra_departure_date_max'];
+	$extra_departure_date_min = $meta['extra_departure_date_min'];
+	$extra_departure_time_max = $meta['extra_departure_time_max'];
+	$extra_departure_time_min = $meta['extra_departure_time_min'];
+
+	$user_meta = get_user_meta(get_current_user_id());
+	$extra_first_name = '';
+	$extra_last_name = '';
+	if ($user_meta != false) {
+		$extra_first_name = $user_meta['first_name'][0];
+		$extra_last_name = $user_meta['last_name'][0];
+	}
+	?>
+	<script type="text/javascript">
+		var extra_booking_datas = {
+		'template_url': "<?php echo THEME_URI; ?>",
+			'extra_arrival_date_max': "<?php echo $extra_arrival_date_max; ?>",
+			'extra_arrival_date_min': "<?php echo $extra_arrival_date_min; ?>",
+			'extra_arrival_time_max': "<?php echo $extra_arrival_time_max; ?>",
+			'extra_arrival_time_min': "<?php echo $extra_arrival_time_min; ?>",
+			'extra_departure_date_max': "<?php echo $extra_departure_date_max; ?>",
+			'extra_departure_date_min': "<?php echo $extra_departure_date_min; ?>",
+			'extra_departure_time_max': "<?php echo $extra_departure_time_max; ?>",
+			'extra_departure_time_min': "<?php echo $extra_departure_time_min; ?>",
+			'extra_first_name': "<?php echo $extra_first_name; ?>",
+			'extra_last_name': "<?php echo $extra_last_name; ?>"
+		};
+	</script>
+	<?php
+}
+
 ?>

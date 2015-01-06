@@ -8,7 +8,7 @@
  *
  *
  *********************/
-function extra_forms_output_field_input($return, $fields, $field, $post) {
+function extra_custom_fields_emp_forms_output_field_input($return, $fields, $field, $post) {
 	// GET THE CORRECT FIELD
 	if($field["fieldid"] == "extra_hotel") {
 		global $EM_Event;
@@ -46,10 +46,15 @@ function extra_forms_output_field_input($return, $fields, $field, $post) {
 			foreach($hotels_query as $hotel) {
 				$hotel_metabox->the_meta($hotel->ID);
 
+//				$is_selected = (array_key_exists($field["fieldid"], $_POST) && $_POST[$field["fieldid"]] == $hotel->post_title);
+				$is_selected = !empty($post) && $post == $hotel->ID;
 				if(array_key_exists($hotel->ID, $rooms_used) && $rooms_used[$hotel->ID] >= intval($hotel_metabox->get_the_value("room_max"))) {
-					$return .= '<option disabled="disabled" value="'.$hotel->ID.'">'.$hotel->post_title.' '.__('(plus de place disponible)', 'extra').'</option>';
+					$selected = $is_selected ? ' selected="selected"' : '';
+					$disabled = (!$is_selected) ? ' disabled="disabled"' : '';
+
+					$return .= '<option'.$disabled.$selected.' value="'.$hotel->ID.'">'.$hotel->post_title.' '.__('(plus de place disponible)', 'extra').'</option>';
 				} else {  
-					$selected = (array_key_exists($field["fieldid"], $_POST) && $_POST[$field["fieldid"]] == $hotel->post_title) ? ' selected="selected"' : '';
+					$selected = $is_selected ? ' selected="selected"' : '';
 					$return .= '<option'.$selected.' value="'.$hotel->ID.'">'.$hotel->post_title.'</option>';
 				}
 			}
@@ -59,6 +64,86 @@ function extra_forms_output_field_input($return, $fields, $field, $post) {
 		$return .= print_r(new EM_Bookings, true);
 		$return .= '</pre>';*/
 		
+	} else if($field["fieldid"] == "activity_selector") {
+		$return = "";
+
+		////
+		//// ACTIVITIES
+		////
+
+		// GET ALL ACTIVITIES
+		$activities = get_posts(array(
+			'post_type' => 'activity',
+			'posts_per_page' => -1
+		));
+
+		// PREPARE THE SELECT
+		//$return .= '<p>';
+		//<label for="activities">'.__("Choix de l'activitié", "extra").'</label>';
+		$return .= '<select id="'.$field["fieldid"].'" class="input activities" name="'.$field["fieldid"].'">';
+
+		// DEFAULT VALUE
+		$return .= '<option value="">'.__("Choisissez une activité", "extra").'</option>';
+
+		// LOOP IN ALL ACTIVITIES
+		foreach($activities as $activity) {
+
+			// GET CONNECTED ITEMS
+			$connected = get_posts(array(
+				'connected_type' => 'restaurant_to_activity',
+				'connected_items' => $activity,
+				'nopaging' => true
+			));
+			$connected_output = '';
+			foreach($connected as $connected_item) {
+				$connected_output .= $connected_item->post_name.' ';
+
+			}
+			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$activity->post_name.'">'.$activity->post_title.'</option>';
+		}
+
+		$return .= '</select>';
+	} else if($field["fieldid"] == "restaurant_selector") {
+
+		$return = "";
+
+		////
+		//// RESTAURANTS
+		////
+
+		// GET ALL RESTAURANTS
+		$restaurants = get_posts(array(
+			'post_type' => 'restaurant',
+			'posts_per_page' => -1
+		));
+
+		// PREPARE THE SELECT
+		//$return .= '<p>';
+		//<label for="restaurants">'.__("Choix du restaurant", "extra").'</label>';
+		$return .= '<select id="'.$field["fieldid"].'" class="input restaurants" name="'.$field["fieldid"].'">';
+
+		// DEFAULT VALUE
+		$return .= '<option value="">'.__("Choisissez un restaurant", "extra").'</option>';
+
+		// LOOP IN ALL ACTIVITIES
+		foreach($restaurants as $restaurant) {
+
+			// GET CONNECTED ITEMS
+			$connected = get_posts(array(
+				'connected_type' => 'restaurant_to_activity',
+				'connected_items' => $restaurant,
+				'nopaging' => true
+			));
+			$connected_output = '';
+			foreach($connected as $connected_item) {
+				$connected_output .= $connected_item->post_name.' ';
+
+			}
+			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$restaurant->post_name.'">'.$restaurant->post_title.'</option>';
+		}
+		$return .= '</select>';
+
+		$return .= '<p><a class="button reset" href="#">'.__("Réinitialiser", "extra").'</a></p>';
 	} else if($field["fieldid"] == "extra_user_fields") {
 	
 		if(!is_admin()) {
@@ -146,107 +231,31 @@ function extra_forms_output_field_input($return, $fields, $field, $post) {
 	}
 	return $return;
 }
-add_action("emp_forms_output_field_input", "extra_forms_output_field_input", 10, 4);
+add_action("emp_forms_output_field_input", "extra_custom_fields_emp_forms_output_field_input", 10, 4);
 
 
 
-/**********************
- *
- *
- *
- * CUSTOM INPUT
- *
- *
- *
- *********************/
-function extra_input_activities_restaurant($return, $fields, $field, $post) {
+function extra_custom_fields_emp_forms_get_formatted_value ($value, $field) {
+	$formatted_value = $value;
 
-
-	// GET THE CORRECT FIELD
-	if($field["fieldid"] == "activity_selector") {
-		$return = "";
-
-		////
-		//// ACTIVITIES
-		////
-
-		// GET ALL ACTIVITIES
-		$activities = get_posts(array(
-			'post_type' => 'activity',
-			'posts_per_page' => -1
-		));
-
-		// PREPARE THE SELECT
-		//$return .= '<p>';
-		//<label for="activities">'.__("Choix de l'activitié", "extra").'</label>';
-		$return .= '<select id="'.$field["fieldid"].'" class="input activities" name="'.$field["fieldid"].'">';
-
-		// DEFAULT VALUE
-		$return .= '<option value="">'.__("Choisissez une activité", "extra").'</option>';
-
-		// LOOP IN ALL ACTIVITIES
-		foreach($activities as $activity) {
-
-			// GET CONNECTED ITEMS
-			$connected = get_posts(array(
-				'connected_type' => 'restaurant_to_activity',
-				'connected_items' => $activity,
-				'nopaging' => true
-			));
-			$connected_output = '';
-			foreach($connected as $connected_item) {
-				$connected_output .= $connected_item->post_name.' ';
-
-			}
-			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$activity->post_name.'">'.$activity->post_title.'</option>';
-		}
-
-		$return .= '</select>';
+	if($field["fieldid"] == "extra_hotel" && !empty($value)) {
+		$hotel = get_post($value);
+		$formatted_value = $hotel->post_title;
 	}
 
-	if($field["fieldid"] == "restaurant_selector") {
-
-		$return = "";
-
-		////
-		//// RESTAURANTS
-		////
-
-		// GET ALL RESTAURANTS
-		$restaurants = get_posts(array(
-			'post_type' => 'restaurant',
-			'posts_per_page' => -1
-		));
-
-		// PREPARE THE SELECT
-		//$return .= '<p>';
-		//<label for="restaurants">'.__("Choix du restaurant", "extra").'</label>';
-		$return .= '<select id="'.$field["fieldid"].'" class="input restaurants" name="'.$field["fieldid"].'">';
-
-		// DEFAULT VALUE
-		$return .= '<option value="">'.__("Choisissez un restaurant", "extra").'</option>';
-
-		// LOOP IN ALL ACTIVITIES
-		foreach($restaurants as $restaurant) {
-
-			// GET CONNECTED ITEMS
-			$connected = get_posts(array(
-				'connected_type' => 'restaurant_to_activity',
-				'connected_items' => $restaurant,
-				'nopaging' => true
-			));
-			$connected_output = '';
-			foreach($connected as $connected_item) {
-				$connected_output .= $connected_item->post_name.' ';
-
-			}
-			$return .= '<option data-connected="'.substr($connected_output, 0, -1).'" value="'.$restaurant->post_name.'">'.$restaurant->post_title.'</option>';
-		}
-		$return .= '</select>';
-
-		$return .= '<p><a class="button reset" href="#">'.__("Réinitialiser", "extra").'</a></p>';
-	}
-	return $return;
+	return $formatted_value;
 }
-add_action("emp_forms_output_field_input", "extra_input_activities_restaurant", 10, 4);
+add_filter("extra_emp_forms_get_formatted_value", "extra_custom_fields_emp_forms_get_formatted_value", 10, 2);
+
+
+function extra_custom_fields_admin_init(){
+	if( !empty($_REQUEST['page']) && $_REQUEST['page'] == 'events-manager-bookings' ){
+		global $EM_Event;
+
+		$EM_Event->post_id;
+		the_extra_booking_datas($EM_Event->post_id);
+	}
+}
+
+add_action('admin_init', 'extra_custom_fields_admin_init');
 ?>

@@ -25,10 +25,20 @@ function extra_change_paypal_vars($paypal_vars, $EM_Booking, $EM_Gateway_Paypal)
 	 *
 	 *
 	 *********************/
-	if (!empty($EM_Booking->booking_meta['booking']['extra_hosting'])){
+	if (!empty($EM_Booking->booking_meta['booking']['extra_hosting']) && !empty($EM_Booking->booking_meta['booking']['extra_arrival_date']) && !empty($EM_Booking->booking_meta['booking']['extra_departure_date'])){
 		$arrival_date = date_create_from_format($date_format, $EM_Booking->booking_meta['booking']['extra_arrival_date']);
 		$departure_date = date_create_from_format($date_format, $EM_Booking->booking_meta['booking']['extra_departure_date']);
-		$days = intval((date_format($departure_date, "U") - date_format($arrival_date, "U"))/86400);
+
+		if ($departure_date === true | $departure_date === false) {
+			var_dump($departure_date);
+			var_dump($arrival_date);
+			var_dump($EM_Booking->booking_meta['booking']['extra_hosting']);
+			die;
+		}
+		$departure_timestamp = date_format($departure_date, "U");
+		$arrival_timestamp = date_format($arrival_date, "U");
+
+		$days = intval(($departure_timestamp - $arrival_timestamp)/86400);
 		$price = 0;
 
 		$extra_hotel_id = $EM_Booking->booking_meta['booking']['extra_hotel'];

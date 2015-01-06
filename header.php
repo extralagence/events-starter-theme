@@ -54,7 +54,7 @@ global $extra_options;
 					<?php if(!is_user_logged_in()): ?>
 						<a href="<?php echo wp_login_url(site_url('/')); ?>"><?php _e("Se connecter", "extra"); ?></a>
 					<?php else: ?>
-						<a href=" http://dev.extralagence.com/www.mycorpevent.com/demo-v2/mon-profil<?php //echo admin_url('profile.php'); ?>"><?php _e("Mon profil", "extra"); ?></a> |
+						<a href="<?php echo site_url().'/mon-profil' ?>"><?php _e("Mon profil", "extra"); ?></a> |
 						<a href="<?php echo get_permalink(get_option("dbem_my_bookings_page")); ?>"><?php _e("Gérer ma réservation", "extra"); ?></a> |
 						<a href="<?php echo wp_logout_url(); ?>"><?php _e("Se déconnecter", "extra"); ?></a>
 					<?php endif; ?>

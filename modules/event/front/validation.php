@@ -47,19 +47,32 @@ function extra_emp_form_validate_field($result, $field, $value, $EM_Form) {
 			//$EM_Booking->add_error(__("Vous n'avez pas indiqué votre régime.", "extra"));
 			$EM_Form->add_error(__("Vous n'avez pas indiqué votre régime.", "extra"));
 
-			var_dump('add error');
-			var_dump("Vous n'avez pas indiqué votre régime.");
+//			var_dump('add error');
+//			var_dump("Vous n'avez pas indiqué votre régime.");
 		}
 	}
+
+
+	if ($metas['extra_hosting'] == true && $field['fieldid'] == 'extra_arrival_date') {
+		if (empty($value)) {
+			$result = false;
+			$EM_Form->add_error(__("Vous n'avez pas indiqué votre jour d'arrivé.", "extra"));
+		}
+	}
+	if ($metas['extra_hosting'] == true && $field['fieldid'] == 'extra_departure_date') {
+		$result = false;
+		$EM_Form->add_error(__("Vous n'avez pas indiqué votre jour de départ.", "extra"));
+	}
+
 
 	//ACTIVITIES AND RESTAURANTS
 	//if ($metas['activities'] ==)
 
-	if ($field['fieldid'] == 'activity_selector') {
-		var_dump($result);
-		var_dump($field);
-		var_dump($value);
-	}
+//	if ($field['fieldid'] == 'activity_selector') {
+//		var_dump($result);
+//		var_dump($field);
+//		var_dump($value);
+//	}
 
 	return $result;
 }

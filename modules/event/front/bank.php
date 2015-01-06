@@ -32,7 +32,7 @@ function generate_iban_url($first_name, $last_name, $price) {
 	$pdf->Write(0, iconv("UTF-8", "CP1252", $price));
 	// Command number
 	$pdf->SetXY(39, 137.3);
-	$pdf->Write(0, iconv("UTF-8", "CP1252", 'CR 2014 - '.$first_name.' '.$last_name));
+	$pdf->Write(0, iconv("UTF-8", "CP1252", 'ME 2014 - '.$first_name.' '.$last_name));
 	
 	// CURRENT TIME
 	$file = strtolower(sanitize_file_name(remove_accents('bank_transfer_'.$first_name.'_'.$last_name)));
